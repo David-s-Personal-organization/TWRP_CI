@@ -14,12 +14,12 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: CPH1861
-  DT_LINK:  https://github.com/SHRP-Devices/device_oppo_CPH1861.git
-  DT_PATH: device/oppo/CPH1861
+  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_10.0
+  DEVICE: RMX2151
+  DT_LINK:  https://github.com/Mediatek-leaks/2151.git
+  DT_PATH: device/realme/RMX2151
   TARGET: recoveryimage
-  VENDOR: oppo
+  VENDOR: realme
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
