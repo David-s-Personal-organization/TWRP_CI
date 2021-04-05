@@ -23,8 +23,8 @@ env:
   DT_PATH2: device/xiaomi/land
   TARGET: recoveryimage
   VENDOR: xiaomi
-  MAINTAINER: @techyminati
-  MAINTAINER2: @MarvelMathesh
+  MAINTAINER: TechyMinati
+  MAINTAINER2: MarvelMathesh
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
