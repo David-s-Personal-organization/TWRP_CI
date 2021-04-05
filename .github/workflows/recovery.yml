@@ -15,14 +15,16 @@ on:
 
 env:
   MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: cactus
-  DEVICE2: cereus
-  DT_LINK:  https://github.com/SHRP-Devices/device_xiaomi_cactus.git
-  DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_cereus.git
-  DT_PATH: device/xiaomi/cactus
-  DT_PATH2: device/xiaomi/cereus
+  DEVICE: olivelite
+  DEVICE2: land
+  DT_LINK:  https://github.com/SHRP-Devices/android_recovery_xiaomi_olivelite.git
+  DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_land.git
+  DT_PATH: device/xiaomi/olivelite
+  DT_PATH2: device/xiaomi/land
   TARGET: recoveryimage
   VENDOR: xiaomi
+  MAINTAINER: @techyminati
+  MAINTAINER2: @MarvelMathesh
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
@@ -76,7 +78,7 @@ jobs:
                   -F chat_id="-1001181350086" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
-                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE' </b> | Maintainer : <b> @yarpopkov  </b> | <i> #SHRP Recovery </i> "    
+                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE' </b> | Maintainer : <b> $MAINTAINER  </b> | <i> #SHRP Recovery </i> "    
 
        - name: Build 2
          run: |
@@ -97,4 +99,4 @@ jobs:
                   -F chat_id="-1001181350086" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
-                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE2' </b> | Maintainer : <b> @yarpopkov  </b> | <i> #SHRP Recovery </i> " 
+                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE2' </b> | Maintainer : <b> $MAINTAINER2  </b> | <i> #SHRP Recovery </i> " 
