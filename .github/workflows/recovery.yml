@@ -20,7 +20,7 @@ env:
   DT_LINK: https://github.com/SHRP-Devices/device_coolpad_c103.git
   DT_LINK2: https://github.com/SHRP-Devices/device_coolpad_c103.git
   DT_PATH: device/coolpad/c103
-  DT_PATH2: device/coolpad/c103
+  DT_PATH2: device/coolpad/C69
   TARGET: recoveryimage
   VENDOR: coolpad
   MAINTAINER: epicX
