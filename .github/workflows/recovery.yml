@@ -15,11 +15,14 @@ on:
 
 env:
   MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: RMX1801
-  DT_LINK:  https://github.com/SHRP-Devices/recovery_device_realme_RMX1801.git
-  DT_PATH: device/realme/RMX1801
+  DEVICE: cactus
+  DEVICE2: cereus
+  DT_LINK:  https://github.com/SHRP-Devices/device_xiaomi_cactus.git
+  DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_cereus.git
+  DT_PATH: device/xiaomi/cactus
+  DT_PATH2: device/xiaomi/cereus
   TARGET: recoveryimage
-  VENDOR: realme
+  VENDOR: xiaomi
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
@@ -52,18 +55,46 @@ jobs:
              repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -c -q --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
+             git clone $DT_LINK2 --depth=1 --single-branch $DT_PATH2
              
        - name: Build
          run: |
               cd work
               . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
-       - name: Upload recovery image to SHRP Maintainers Group
+       - name: Upload recovery image 1 to SHRP Maintainers Group
          run: |
-              cd work/out/target/product/$DEVICE && rm -rf *AddonRescue*.zip
-              ZIP=$(echo *.zip)
+              cd work/out/target/product/$DEVICE 
+              ZIP=$(echo *stable*.zip)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
                   -F chat_id="-1001181350086" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
                   -F caption=" <i> SHRP Recovery </i> for <b> '$VENDOR' '$DEVICE' </b> is Available for Testing Purposes Only | Build finished on <b> $(date) </b> | <i> #SHRP Recovery </i> "
+              ZIP=$(echo *AddonRescue*.zip)
+              curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
+                  -F chat_id="-1001181350086" \
+                  -F "disable_web_page_preview=true" \
+                  -F "parse_mode=html" \
+                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE' </b> | Maintainer : <b> @yarpopkov  </b> | <i> #SHRP Recovery </i> "    
+
+       - name: Build 2
+         run: |
+              cd work
+              . build/envsetup.sh &&lunch omni_$DEVICE2-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+             
+       - name: Upload recovery image 2 to SHRP Maintainers Group
+         run: |
+              cd work/out/target/product/$DEVICE2
+              ZIP=$(echo *stable*.zip)
+              curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
+                  -F chat_id="-1001181350086" \
+                  -F "disable_web_page_preview=true" \
+                  -F "parse_mode=html" \
+                  -F caption=" <i> SHRP Recovery </i> for <b> '$VENDOR' '$DEVICE2' </b> is Available for Testing Purposes Only | Build finished on <b> $(date) </b> | <i> #SHRP Recovery </i> "
+              ZIP=$(echo *AddonRescue*.zip)
+              curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
+                  -F chat_id="-1001181350086" \
+                  -F "disable_web_page_preview=true" \
+                  -F "parse_mode=html" \
+                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE2' </b> | Maintainer : <b> @yarpopkov  </b> | <i> #SHRP Recovery </i> " 
