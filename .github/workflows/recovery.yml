@@ -14,17 +14,17 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: RMX1801
-  DEVICE2: RMX1831
-  DT_LINK: https://github.com/SHRP-Devices/device_realme_RMX1801.git
-  DT_LINK2: https://github.com/SHRP-Devices/device_realme_RMX1831.git
-  DT_PATH: device/realme/RMX1801
-  DT_PATH2: device/realme/RMX1831
+  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_10.0
+  DEVICE: RMX2185
+  DEVICE2: RMX2151
+  DT_LINK: https://github.com/Mediatek-leaks/android_recovery_realme_RMX2185.git
+  DT_LINK2: https://github.com/Mediatek-leaks/2151.git
+  DT_PATH: device/realme/RMX2185
+  DT_PATH2: device/realme/RMX2151
   TARGET: recoveryimage
   VENDOR: realme
-  MAINTAINER: Aditya 
-  MAINTAINER2: Deepak
+  MAINTAINER: TechyMinati
+  MAINTAINER2: TechyMinati
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
@@ -69,13 +69,13 @@ jobs:
               cd work/out/target/product/$DEVICE 
               ZIP=$(echo *stable*.zip)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001181350086" \
+                  -F chat_id="-1001296548298" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
                   -F caption=" <i> SHRP Recovery </i> for <b> '$VENDOR' '$DEVICE' </b> is Available for Testing Purposes Only | Build finished on <b> $(date) </b> | <i> #SHRP Recovery </i> "
               ZIP=$(echo *AddonRescue*.zip)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001181350086" \
+                  -F chat_id="-1001296548298" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
                   -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE' </b> | Maintainer : <b> $MAINTAINER  </b> | <i> #SHRP Recovery </i> "    
@@ -90,13 +90,13 @@ jobs:
               cd work/out/target/product/$DEVICE2
               ZIP=$(echo *stable*.zip)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001181350086" \
+                  -F chat_id="-1001296548298" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
                   -F caption=" <i> SHRP Recovery </i> for <b> '$VENDOR' '$DEVICE2' </b> is Available for Testing Purposes Only | Build finished on <b> $(date) </b> | <i> #SHRP Recovery </i> "
               ZIP=$(echo *AddonRescue*.zip)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001181350086" \
+                  -F chat_id="-1001296548298" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
                   -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE2' </b> | Maintainer : <b> $MAINTAINER2  </b> | <i> #SHRP Recovery </i> " 
