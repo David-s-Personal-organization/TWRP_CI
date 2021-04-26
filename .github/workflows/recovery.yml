@@ -15,16 +15,16 @@ on:
 
 env:
   MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: whyred
-  DEVICE2: rosy
-  DT_LINK: https://github.com/SHRP-Devices/device_xiaomi_whyred
-  DT_LINK2: https://github.com/SHRP-Devices/recovery_xiaomi_rosy
-  DT_PATH: device/xiaomi/whyred
-  DT_PATH2: device/xiaomi/rosy
+  DEVICE: oneplus3
+  DEVICE2: RMX1831
+  DT_LINK: https://github.com/SHRP-Devices/device_oneplus_oneplus3
+  DT_LINK2: https://github.com/SHRP-Devices/device_realme_RMX1831
+  DT_PATH: device/oneplus/oneplus3
+  DT_PATH2: device/realme/RMX1831
   TARGET: recoveryimage
-  VENDOR: xiaomi
+  VENDOR: BBK
   MAINTAINER: SHRP CI
-  MAINTAINER2: SHRP CI
+  MAINTAINER2: Deepak
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
