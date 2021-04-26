@@ -14,17 +14,17 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_10.0
-  DEVICE: RMX2185
-  DEVICE2: phoenix
-  DT_LINK: https://github.com/Mediatek-leaks/android_recovery_realme_RMX2185
-  DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_phoenix
-  DT_PATH: device/realme/RMX2185
-  DT_PATH2: device/xiaomi/phoenix
+  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
+  DEVICE: whyred
+  DEVICE2: rosy
+  DT_LINK: https://github.com/SHRP-Devices/device_xiaomi_whyred
+  DT_LINK2: https://github.com/SHRP-Devices/recovery_xiaomi_rosy
+  DT_PATH: device/xiaomi/whyred
+  DT_PATH2: device/xiaomi/rosy
   TARGET: recoveryimage
-  VENDOR: android
-  MAINTAINER: TechyMinati
-  MAINTAINER2: hraj9258
+  VENDOR: xiaomi
+  MAINTAINER: SHRP CI
+  MAINTAINER2: SHRP CI
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
