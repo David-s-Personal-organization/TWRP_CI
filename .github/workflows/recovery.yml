@@ -16,11 +16,11 @@ on:
 env:
   MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
   DEVICE: RMX1831
-  DEVICE2: RMX1831
+  DEVICE2: RMX1801
   DT_LINK: https://github.com/SHRP-Devices/device_realme_RMX1831
-  DT_LINK2: https://github.com/SHRP-Devices/device_realme_RMX1831
+  DT_LINK2: https://github.com/SHRP-Devices/device_realme_RMX1801
   DT_PATH: device/realme/RMX1831
-  DT_PATH2: device/realme/RMX1831
+  DT_PATH2: device/realme/RMX1801
   TARGET: recoveryimage
   VENDOR: realme
   MAINTAINER: SHRP CI
