@@ -15,16 +15,16 @@ on:
 
 env:
   MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: RMX1801
-  DEVICE2: tiare
-  DT_LINK: https://github.com/SHRP-Devices/device_xiaomi_tiare
-  DT_LINK2: https://github.com/SHRP-Devices/device_realme_RMX1801
-  DT_PATH: device/xiaomi/tiare
-  DT_PATH2: device/realme/RMX1801
+  DEVICE: cereus
+  DEVICE2: cactus
+  DT_LINK: https://github.com/SHRP-Devices/device_xiaomi_cereus
+  DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_cactus
+  DT_PATH: device/xiaomi/cereus
+  DT_PATH2: device/xiaomi/cactus
   TARGET: recoveryimage
   VENDOR: android
-  MAINTAINER: TechyMinati
-  MAINTAINER2: Aditya 
+  MAINTAINER: MegaFon929
+  MAINTAINER2: MegaFon929
   TZ: Asia/Kolkata
   ID: -1001181350086
   TOKEN: ${{ secrets.BOTTOKEN }}
