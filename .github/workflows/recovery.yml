@@ -15,15 +15,15 @@ on:
 
 env:
   MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: raphael
+  DEVICE: CPH1861
   DEVICE2: cactuss
-  DT_LINK: https://github.com/SHRP-Devices/device_xiaomi_raphael
+  DT_LINK: https://github.com/SHRP-Devices/device_oppo_CPH1861
   DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_cactus
-  DT_PATH: device/xiaomi/raphael
+  DT_PATH: device/oppo/CPH1861
   DT_PATH2: device/xiaomi/cactuss
   TARGET: recoveryimage
-  VENDOR: xiaomi
-  MAINTAINER: Pallav
+  VENDOR: oppo
+  MAINTAINER: ProNoob
   MAINTAINER2: MegaFon929
   TZ: Asia/Kolkata
   ID: -1001181350086
