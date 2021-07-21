@@ -15,15 +15,15 @@ on:
 
 env:
   MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: cereus
-  DEVICE2: cactus
-  DT_LINK: https://github.com/SHRP-Devices/device_xiaomi_cereus
+  DEVICE: raphael
+  DEVICE2: cactuss
+  DT_LINK: https://github.com/SHRP-Devices/device_xiaomi_raphael
   DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_cactus
-  DT_PATH: device/xiaomi/cereus
-  DT_PATH2: device/xiaomi/cactus
+  DT_PATH: device/xiaomi/raphael
+  DT_PATH2: device/xiaomi/cactuss
   TARGET: recoveryimage
-  VENDOR: android
-  MAINTAINER: MegaFon929
+  VENDOR: xiaomi
+  MAINTAINER: Pallav
   MAINTAINER2: MegaFon929
   TZ: Asia/Kolkata
   ID: -1001181350086
