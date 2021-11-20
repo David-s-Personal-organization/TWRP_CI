@@ -14,19 +14,15 @@ on:
     types: [started]
 
 env:
-  MANIFEST: git://github.com/SHRP/platform_manifest_twrp_omni.git -b v3_9.0
-  DEVICE: CPH1861
-  DEVICE2: cactuss
-  DT_LINK: https://github.com/SHRP-Devices/device_oppo_CPH1861
-  DT_LINK2: https://github.com/SHRP-Devices/device_xiaomi_cactus
-  DT_PATH: device/oppo/CPH1861
-  DT_PATH2: device/xiaomi/cactuss
+  MANIFEST: git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-8.1
+  DEVICE: tiare
+  DT_LINK: https://github.com/MinatiScape/android_device_xiaomi_tiare-pbrp
+  DT_PATH: device/xiaomi/tiare
   TARGET: recoveryimage
-  VENDOR: oppo
-  MAINTAINER: ProNoob
-  MAINTAINER2: MegaFon929
+  VENDOR: xiaomi
+  MAINTAINER: TechyMinati
   TZ: Asia/Kolkata
-  ID: -1001181350086
+  ID: -1001438051186
   TOKEN: ${{ secrets.BOTTOKEN }}
   
   
@@ -57,47 +53,19 @@ jobs:
              repo init -u $MANIFEST --depth=1 --groups=all,-notdefault,-device,-darwin,-x86,-mips
              repo sync -c -q --force-sync --optimized-fetch --no-tags --no-clone-bundle --prune -j$(nproc --all)
              git clone $DT_LINK --depth=1 --single-branch $DT_PATH
-             git clone $DT_LINK2 --depth=1 --single-branch $DT_PATH2
              git clone https://github.com/omnirom/android_vendor_qcom_opensource_commonsys --depth=1 -b android-9.0 vendor/qcom/opensource/commonsys
              
        - name: Build
          run: |
               cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
+              . build/envsetup.sh && export TW_DEVICE_VERSION=-Minati && lunch omni_$DEVICE-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
              
        - name: Upload recovery image 1 to SHRP Maintainers Group
          run: |
-              cd work/out/target/product/$DEVICE 
-              ZIP=$(echo *stable*.zip)
+              cd work/out/target/product/$DEVICE && mv recovery.img recovery-$DEVICE.img
+              ZIP=$(echo *recovery*.img)
               curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001296548298" \
+                  -F chat_id="-1001438051186" \
                   -F "disable_web_page_preview=true" \
                   -F "parse_mode=html" \
-                  -F caption=" <i> SHRP Recovery </i> for <b> '$VENDOR' '$DEVICE' </b> is Available for Testing Purposes Only | Build finished on <b> $(date) </b> | <i> #SHRP Recovery </i> "
-              ZIP=$(echo *AddonRescue*.zip)
-              curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001296548298" \
-                  -F "disable_web_page_preview=true" \
-                  -F "parse_mode=html" \
-                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE' </b> | Maintainer : <b> $MAINTAINER  </b> | <i> #SHRP Recovery </i> "    
-
-       - name: Build 2
-         run: |
-              cd work
-              . build/envsetup.sh &&lunch omni_$DEVICE2-eng &&export ALLOW_MISSING_DEPENDENCIES=true && mka $TARGET
-             
-       - name: Upload recovery image 2 to SHRP Maintainers Group
-         run: |
-              cd work/out/target/product/$DEVICE2
-              ZIP=$(echo *stable*.zip)
-              curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001296548298" \
-                  -F "disable_web_page_preview=true" \
-                  -F "parse_mode=html" \
-                  -F caption=" <i> SHRP Recovery </i> for <b> '$VENDOR' '$DEVICE2' </b> is Available for Testing Purposes Only | Build finished on <b> $(date) </b> | <i> #SHRP Recovery </i> "
-              ZIP=$(echo *AddonRescue*.zip)
-              curl -F document=@$ZIP "https://api.telegram.org/bot$TOKEN/sendDocument" \
-                  -F chat_id="-1001296548298" \
-                  -F "disable_web_page_preview=true" \
-                  -F "parse_mode=html" \
-                  -F caption=" <i> SHRP AddOnRescue </i> for <b> '$VENDOR' '$DEVICE2' </b> | Maintainer : <b> $MAINTAINER2  </b> | <i> #SHRP Recovery </i> " 
+                  -F caption=" <i> TWRP Recovery </i> for <b> '$VENDOR' '$DEVICE' </b> is Available for Testing Purposes Only | Build finished on <b> $(date) </b> | <i> #MinatiCI </i> "
